@@ -41,14 +41,14 @@ const createMonth = (monthNumber, year) => {
 const getFirstShiftDay = (monthArray, shiftNumber) => {
   for (let i = 0; i < monthArray.length; i++) {
     if (Shifts.getShiftNumber(monthArray[i], false) === shiftNumber) {
-      return {/*date: monthArray[i], night: false*/ dateIndex: i, night: false};
+      return {dateIndex: i, night: false};
     }
     if (Shifts.getShiftNumber(monthArray[i], true) === shiftNumber) {
-      return {/*date: monthArray[i], night: true*/ dateIndex: i, night: true};
+      return {dateIndex: i, night: true};
     }
   }
 }
-//zwraca pierwszy dzień/noc podanego miesiąca, w którym dana zmiana ma służbę, np. dla zmiany 4 => { date: [ 2020, 7, 3 ], night: false }
+//zwraca index pierwszego rekordu monthArray, w którym dana zmiana ma służbę;
 
 const createShiftMonth = (monthNumber, year, shiftNumber) => {
   const month = createMonth(monthNumber, year);
@@ -85,10 +85,7 @@ const createShiftMonth = (monthNumber, year, shiftNumber) => {
   })
   return shiftMonth
 }
+//zwraca tablicę ze wszystkimi dniami miesiąca, gdzie rekordy zawierają informację o dacie, o tym czy dana zmiana
+//ma tego dnia służbę i jeśli tak, to czy jest to dzień czy noc
 
-
-
-
-// const month = createMonth(7,2020)
-// console.log(getFirstShiftDay(month,4))
 console.log(createShiftMonth(6,2020,3))
