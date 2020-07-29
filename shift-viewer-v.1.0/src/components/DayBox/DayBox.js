@@ -6,7 +6,7 @@ import "./DayBox.css";
 const DayBox = (props) => {
   const dayName = getDayName(props.date);
   return (
-    <div className="day-box" id={props.duty && (props.duty === "day" ? "duty-day" : "duty-night")}>
+    <div className="day-box" id={props.duty ? (props.duty === "day" ? "duty-day" : "duty-night") : "blank"}>
       <p className="day-box-children">{props.date[2]}</p>
       <p
         className="day-box-children"
