@@ -16,9 +16,19 @@ class Calendar extends React.Component {
     });
   };
   handleYearSelector = (props) => {
-    this.setState({
-      year: parseInt(props),
-    });
+    // this.setState({
+    //   year: parseInt(props),
+    // });
+    switch (props) {
+      case "+":
+        this.setState({ year: this.state.year + 1 });
+        break;
+      case "-":
+        this.setState({ year: this.state.year - 1 });
+        break;
+      default:
+        break;
+    }
   };
   handleShiftSelector = (props) => {
     this.setState({
