@@ -1,11 +1,11 @@
 const displayUnicode = (duty) => {
   switch (duty) {
     case "night":
-      return "🌙";
+      return "noc 🌙";
     case "day":
-      return "☀";
+      return "dzień ☀";
     default:
-      return "-";
+      return "wolne -";
   }
 };
 

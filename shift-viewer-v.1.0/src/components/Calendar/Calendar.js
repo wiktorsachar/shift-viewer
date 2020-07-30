@@ -43,15 +43,19 @@ class Calendar extends React.Component {
     );
     return (
       <div>
-        <DateSelector
-          monthSelector={this.handleMonthSelector}
-          yearSelector={this.handleYearSelector}
-          shiftSelector={this.handleShiftSelector}
-          state={this.state}
-        />
-        {dutyMonth.map((day, i) => (
-          <DayBox date={day.date} duty={day.duty} key={i} />
-        ))}
+        <div className="header">
+          <DateSelector
+            monthSelector={this.handleMonthSelector}
+            yearSelector={this.handleYearSelector}
+            shiftSelector={this.handleShiftSelector}
+            state={this.state}
+          />
+        </div>
+        <div className="content">
+          {dutyMonth.map((day, i) => (
+            <DayBox date={day.date} duty={day.duty} key={i} />
+          ))}
+        </div>
       </div>
     );
   }

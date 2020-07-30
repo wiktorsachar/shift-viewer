@@ -2,6 +2,7 @@ import React from "react";
 import MonthSelector from "./components/MonthSelector";
 import ShiftSelector from "./components/ShiftSelector";
 import YearSelector from "./components/YearSelector";
+import "./DateSelector.css"
 
 const DateSelector = (props) => {
   return (
