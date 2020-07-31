@@ -4,10 +4,12 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App-container">
+    <div className="App-container" id="try">
       <div className="App">
-        <h1 className="prison-service">KALENDARZ ZMIANOWY</h1>
-        <h2 className="prison-service">SŁUŻBY WIĘZIENNEJ</h2>
+        <div id="prison-service">
+          <h1>KALENDARZ ZMIANOWY</h1>
+          <h2>SŁUŻBY WIĘZIENNEJ</h2>
+        </div>
         <Calendar />
       </div>
     </div>
