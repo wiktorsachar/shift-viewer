@@ -7,7 +7,7 @@ import "./DateSelector.css";
 const DateSelector = (props) => {
   return (
     <div>
-      <div className="header-nav">
+      <div className="header-nav" id="year-selector">
         <YearSelector handler={props.yearSelector} year={props.state.year} />
       </div>
       <div className="header-nav">

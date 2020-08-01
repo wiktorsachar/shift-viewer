@@ -4,9 +4,9 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App-container" id="try">
+    <div className="App-container">
       <div className="App">
-        <div id="prison-service">
+        <div className="prison-service">
           <h1>KALENDARZ ZMIANOWY</h1>
           <h2>SŁUŻBY WIĘZIENNEJ</h2>
         </div>

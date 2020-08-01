@@ -1,9 +1,10 @@
 /* .header {
-    height
+  top: 0;
+  position: fixed;
 } */
 .content {
-    overflow: scroll;
-    height: 100%;
-    /* border-width: 10px;
+  overflow: scroll;
+  height: 60vh;
+  /* border-width: 10px;
     border-radius: 12px; */
 }

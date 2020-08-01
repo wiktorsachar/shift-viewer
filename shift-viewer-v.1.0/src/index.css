@@ -6,7 +6,7 @@
   margin: 0px;
 }
 #root {
-  overflow: hidden;
+  overflow: scroll;
   height: 100vh;
   border-width: 0px;
   background: rgba(147, 206, 222, 1);
