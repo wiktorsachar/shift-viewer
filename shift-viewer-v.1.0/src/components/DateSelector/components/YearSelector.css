@@ -3,3 +3,6 @@
   font-family: Trebuchet;
   font-size: 200%;
 }
+.pointer {
+  cursor: pointer;
+}
