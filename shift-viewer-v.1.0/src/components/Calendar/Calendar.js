@@ -21,9 +21,7 @@ class Calendar extends React.Component {
         this.setState({ year: this.state.year + 1 });
         break;
       case "-":
-        if (this.state.year > 0) {
-          this.setState({ year: this.state.year - 1 });
-        }
+        this.setState({ year: this.state.year - 1 });
         break;
       default:
         break;
