@@ -83,8 +83,32 @@ class Shifts {
   }
   //zwraca tablicę ze wszystkimi dniami miesiąca, gdzie rekordy zawierają informację o dacie, o tym czy dana zmiana
   //ma tego dnia służbę i jeśli tak, to czy jest to dzień czy noc;
+  //usage example: Shifts.createShiftMonth(6, 2020, 3);
+  static createDualShiftMonth(monthNumber, year, dualShiftNumber) {
+    const firstShift = this.createShiftMonth(
+      monthNumber,
+      year,
+      dualShiftNumber
+    );
+    const secondShift = this.createShiftMonth(
+      monthNumber,
+      year,
+      dualShiftNumber + 2
+    );
+    let dualShiftMonth = [];
+    for (let i = 0; i < firstShift.length; i++) {
+      dualShiftMonth.push({
+        date: firstShift[i].date,
+        duty:
+          firstShift[i].duty === "day" || secondShift[i].duty === "day"
+            ? "day"
+            : false,
+      });
+    }
+    return dualShiftMonth;
+  }
+  //to co powyżej, tylko obsługuje zmiany podwójne (dzień/wolne/dzień/wolne) - obsługiwane numery zmian to 1 i 2;
+  //usage example: Shifts.createDualShiftMonth(6, 2020, 1);
 }
-
-//usage example: Shifts.createShiftMonth(6, 2020, 3);
 
 export default Shifts;

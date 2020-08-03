@@ -33,11 +33,18 @@ class Calendar extends React.Component {
     });
   };
   render() {
-    const dutyMonth = Shifts.createShiftMonth(
-      this.state.month,
-      this.state.year,
-      this.state.shift
-    );
+    const dutyMonth =
+      this.state.shift < 5
+        ? Shifts.createShiftMonth(
+            this.state.month,
+            this.state.year,
+            this.state.shift
+          )
+        : Shifts.createDualShiftMonth(
+            this.state.month,
+            this.state.year,
+            this.state.shift - 4
+          );
     return (
       <div>
         <div className="header">
