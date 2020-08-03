@@ -33,10 +33,18 @@ const DayBox = (props) => {
         )}
         <p className={checkIfSunday()}>{dayName}</p>
       </div>
-      <div className="day-time-box">
+      {/* <div className="day-time-box">
         <p>{displayUnicode(props.duty)}</p>
         <p>{displayUnicode(props.duty, true)}</p>
-      </div>
+      </div> */}
+      {props.shift === "blank" ? (
+        <div className="day-time-box"></div>
+      ) : (
+        <div className="day-time-box">
+          <p>{displayUnicode(props.duty)}</p>
+          <p>{displayUnicode(props.duty, true)}</p>
+        </div>
+      )}
     </div>
   );
 };

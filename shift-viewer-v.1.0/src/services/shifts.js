@@ -109,6 +109,12 @@ class Shifts {
   }
   //to co powyżej, tylko obsługuje zmiany podwójne (dzień/wolne/dzień/wolne) - obsługiwane numery zmian to 1 i 2;
   //usage example: Shifts.createDualShiftMonth(6, 2020, 1);
+  static createBlankMonth(monthNumber, year) {
+    let month = this.createMonth(monthNumber, year);
+    month.forEach((date, i) => {
+      month[i] = { date, duty: false };
+    });
+    return month;
+  }
 }
-
 export default Shifts;

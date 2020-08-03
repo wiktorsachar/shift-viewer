@@ -10,6 +10,7 @@ const ShiftSelector = (props) => {
         id="shifts"
         onChange={(e) => props.handler(e.target.value)}
       >
+        <option value="blank">wybierz zmianę</option>
         <option value="1">czterozmienny 1</option>
         <option value="2">czterozmienny 2</option>
         <option value="3">czterozmienny 3</option>
