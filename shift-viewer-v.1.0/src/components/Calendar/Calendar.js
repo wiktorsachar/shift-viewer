@@ -59,7 +59,7 @@ class Calendar extends React.Component {
         </div>
         <div className="content">
           {dutyMonth.map((day, i) => (
-            <DayBox date={day.date} duty={day.duty} shift={this.state.shift} key={i} />
+            <DayBox date={day.date} duty={day.duty} shift={this.state.shift} holiday={day.holiday} key={i} />
           ))}
         </div>
       </div>

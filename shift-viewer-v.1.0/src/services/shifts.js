@@ -1,3 +1,6 @@
+import DateService from "./dateService";
+import Holidays from "./holidays";
+
 class Shifts {
   static getRefDate() {
     return 1581634800000;
@@ -46,6 +49,26 @@ class Shifts {
     }
   }
   //zwraca index pierwszego rekordu monthArray, w którym dana zmiana ma służbę;
+  static addHolidaysToShiftMonth(shiftMonth, year) {
+    const holidays = Holidays.getBigHolidays(year);
+    let monthWithHolidays = [];
+    shiftMonth.forEach((day) => {
+      if (DateService.containsDateCheck(day.date, holidays)) {
+        monthWithHolidays.push({
+          date: day.date,
+          duty: day.duty,
+          holiday: true,
+        });
+      } else {
+        monthWithHolidays.push({
+          date: day.date,
+          duty: day.duty,
+          holiday: false,
+        });
+      }
+    });
+    return monthWithHolidays;
+  }
   static createShiftMonth(monthNumber, year, shiftNumber) {
     const month = this.createMonth(monthNumber, year);
     const firstDay = this.getFirstShiftDay(month, shiftNumber);
@@ -79,7 +102,9 @@ class Shifts {
         shiftMonth.push({ date, duty: false });
       }
     });
-    return shiftMonth;
+    //console.log(Shifts.addHolidaysToShiftMonth(shiftMonth, year));
+
+    return /*shiftMonth*/ this.addHolidaysToShiftMonth(shiftMonth, year);
   }
   //zwraca tablicę ze wszystkimi dniami miesiąca, gdzie rekordy zawierają informację o dacie, o tym czy dana zmiana
   //ma tego dnia służbę i jeśli tak, to czy jest to dzień czy noc;
@@ -105,7 +130,7 @@ class Shifts {
             : false,
       });
     }
-    return dualShiftMonth;
+    return /*dualShiftMonth*/ this.addHolidaysToShiftMonth(dualShiftMonth, year);
   }
   //to co powyżej, tylko obsługuje zmiany podwójne (dzień/wolne/dzień/wolne) - obsługiwane numery zmian to 1 i 2;
   //usage example: Shifts.createDualShiftMonth(6, 2020, 1);
@@ -114,7 +139,9 @@ class Shifts {
     month.forEach((date, i) => {
       month[i] = { date, duty: false };
     });
-    return month;
+    return /*month*/ this.addHolidaysToShiftMonth(month, year);
   }
 }
+
+// console.log(Shifts.addHolidaysToShiftMonth(Shifts.createShiftMonth(11,2020,3), 2020))
 export default Shifts;

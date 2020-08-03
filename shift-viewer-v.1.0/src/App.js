@@ -1,5 +1,6 @@
 import React from "react";
 import Calendar from "./components/Calendar/Calendar";
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
           <h2>SŁUŻBY WIĘZIENNEJ</h2>
         </div>
         <Calendar />
+        <Footer />
       </div>
     </div>
   );
