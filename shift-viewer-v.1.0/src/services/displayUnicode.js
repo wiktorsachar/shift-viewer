@@ -1,11 +1,11 @@
-const displayUnicode = (duty) => {
+const displayUnicode = (duty, pictogram) => {
   switch (duty) {
     case "night":
-      return "noc 🌙";
+      return pictogram ? "🌙" : "noc";
     case "day":
-      return "dzień ☀";
+      return pictogram ? "☀" : 'dzień';
     default:
-      return "wolne -";
+      return pictogram ? "-" : "wolne";
   }
 };
 

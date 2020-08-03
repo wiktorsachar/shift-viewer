@@ -23,20 +23,20 @@ const DayBox = (props) => {
           : "blank"
       }
     >
-      {/* <p className={checkIfSunday()}>
-        {props.date[2]}
-      </p> */}
-      {checkIfDigitNumber(props.date[2]) ? (
-        <p className={checkIfSunday()}>{props.date[2]}</p>
-      ) : (
-        <p className={checkIfSunday()}>{props.date[2]}&#8205; &#8205; &#8205;</p>
-      )}
-      <p className={checkIfSunday() /*"holiday-dayname / regular-dayname" */}>
-        {dayName}
-      </p>
-      <p className="day-box-children" id="unicodes">
-        {displayUnicode(props.duty)}
-      </p>
+      <div className="day-box-children">
+        {checkIfDigitNumber(props.date[2]) ? (
+          <p className={checkIfSunday()}>{props.date[2]}</p>
+        ) : (
+          <p className={checkIfSunday()}>
+            {props.date[2]}&#8205; &#8205; &#8205;
+          </p>
+        )}
+        <p className={checkIfSunday()}>{dayName}</p>
+      </div>
+      <div className="day-time-box">
+        <p>{displayUnicode(props.duty)}</p>
+        <p>{displayUnicode(props.duty, true)}</p>
+      </div>
     </div>
   );
 };

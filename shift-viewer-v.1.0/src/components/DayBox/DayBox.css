@@ -2,9 +2,18 @@
   margin: 5px;
   display: flex;
   border-radius: 6px;
+  flex-grow: 1;
 }
-#unicodes {
+.day-box-children {
+  display: flex;
+  width: 50%
+}
+.day-time-box {
+  display: flex;
+  width: 50%;
   color: #d9bc2b;
+  justify-content: space-between;
+  padding-right: 5px;
 }
 .regular-dayname {
   color: black;
