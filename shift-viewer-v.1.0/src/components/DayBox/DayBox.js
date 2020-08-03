@@ -7,6 +7,11 @@ const DayBox = (props) => {
   const dayName = getDayName(props.date);
   const checkIfSunday = () =>
     dayName === "ND" ? "holiday-dayname" : "regular-dayname";
+  const checkIfDigitNumber = (number) => {
+    if ((number + "").length === 2) {
+      return true;
+    }
+  };
   return (
     <div
       className="day-box"
@@ -18,9 +23,14 @@ const DayBox = (props) => {
           : "blank"
       }
     >
-      <p className={checkIfSunday() /*"holiday-dayname / regular-dayname" */}>
+      {/* <p className={checkIfSunday()}>
         {props.date[2]}
-      </p>
+      </p> */}
+      {checkIfDigitNumber(props.date[2]) ? (
+        <p className={checkIfSunday()}>{props.date[2]}</p>
+      ) : (
+        <p className={checkIfSunday()}>{props.date[2]}&#8205; &#8205; &#8205;</p>
+      )}
       <p className={checkIfSunday() /*"holiday-dayname / regular-dayname" */}>
         {dayName}
       </p>
