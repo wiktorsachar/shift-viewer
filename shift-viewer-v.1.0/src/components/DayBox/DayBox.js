@@ -14,7 +14,11 @@ const DayBox = (props) => {
   };
   return (
     <div
-      className="day-box"
+      className={
+        props.date[2] === props.today && props.isMonthAndYearMatch
+          ? "day-box-today"
+          : "day-box"
+      }
       id={
         props.duty
           ? props.duty === "day"
