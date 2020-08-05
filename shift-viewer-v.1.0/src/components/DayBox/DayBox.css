@@ -12,7 +12,6 @@
   border-style: solid;
   border-width: 2px;
   border-color: red;
-  /* filter: drop-shadow(8px 8px 10px red); */
 }
 .day-box-children {
   display: flex;
