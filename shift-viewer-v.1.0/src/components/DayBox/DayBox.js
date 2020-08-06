@@ -5,13 +5,9 @@ import "./DayBox.css";
 
 const DayBox = (props) => {
   const dayName = getDayName(props.date);
-  const checkIfHoliday = () =>
+  const holidayCheck =
     dayName === "ND" || props.holiday ? "holiday-dayname" : "regular-dayname";
-  const checkIfDigitNumber = (number) => {
-    if ((number + "").length === 2) {
-      return true;
-    }
-  };
+  const digitNumberCheck = (props.date[2] + "").length === 2 && true;
   return (
     <div
       className={
@@ -28,14 +24,12 @@ const DayBox = (props) => {
       }
     >
       <div className="day-box-children">
-        {checkIfDigitNumber(props.date[2]) ? (
-          <p className={checkIfHoliday()}>{props.date[2]}</p>
+        {digitNumberCheck ? (
+          <p className={holidayCheck}>{props.date[2]}</p>
         ) : (
-          <p className={checkIfHoliday()}>
-            {props.date[2]}&#8205; &#8205; &#8205;
-          </p>
+          <p className={holidayCheck}>{props.date[2]}&#8205; &#8205; &#8205;</p>
         )}
-        <p className={checkIfHoliday()}>{dayName}</p>
+        <p className={holidayCheck}>{dayName}</p>
       </div>
       {props.shift === "blank" ? (
         <div className="day-time-box"></div>
