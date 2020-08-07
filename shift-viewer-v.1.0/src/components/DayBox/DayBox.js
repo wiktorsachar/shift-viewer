@@ -32,10 +32,19 @@ const DayBox = (props) => {
         <p className={holidayCheck}>{dayName}</p>
       </div>
       {props.shift === "blank" ? (
-        <div className="day-time-box"></div>
+        <div className="day-time-box">
+          <span role="img" className="hidden" aria-label="">
+            &#127769;
+          </span>
+        </div>
       ) : (
         <div className="day-time-box">
           <p>{displayUnicode(props.duty)}</p>
+          {!props.duty && (
+            <span className="hidden" role="img" aria-label="">
+              &#127769;
+            </span>
+          )}
           <p>{displayUnicode(props.duty, true)}</p>
         </div>
       )}

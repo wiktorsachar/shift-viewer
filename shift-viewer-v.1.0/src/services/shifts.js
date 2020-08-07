@@ -102,9 +102,8 @@ class Shifts {
         shiftMonth.push({ date, duty: false });
       }
     });
-    //console.log(Shifts.addHolidaysToShiftMonth(shiftMonth, year));
 
-    return /*shiftMonth*/ this.addHolidaysToShiftMonth(shiftMonth, year);
+    return this.addHolidaysToShiftMonth(shiftMonth, year);
   }
   //zwraca tablicę ze wszystkimi dniami miesiąca, gdzie rekordy zawierają informację o dacie, o tym czy dana zmiana
   //ma tego dnia służbę i jeśli tak, to czy jest to dzień czy noc;
@@ -130,7 +129,7 @@ class Shifts {
             : false,
       });
     }
-    return /*dualShiftMonth*/ this.addHolidaysToShiftMonth(dualShiftMonth, year);
+    return this.addHolidaysToShiftMonth(dualShiftMonth, year);
   }
   //to co powyżej, tylko obsługuje zmiany podwójne (dzień/wolne/dzień/wolne) - obsługiwane numery zmian to 1 i 2;
   //usage example: Shifts.createDualShiftMonth(6, 2020, 1);
@@ -139,9 +138,8 @@ class Shifts {
     month.forEach((date, i) => {
       month[i] = { date, duty: false };
     });
-    return /*month*/ this.addHolidaysToShiftMonth(month, year);
+    return this.addHolidaysToShiftMonth(month, year);
   }
 }
 
-// console.log(Shifts.addHolidaysToShiftMonth(Shifts.createShiftMonth(11,2020,3), 2020))
 export default Shifts;

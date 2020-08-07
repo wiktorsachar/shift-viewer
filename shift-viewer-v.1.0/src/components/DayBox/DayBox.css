@@ -6,6 +6,9 @@
   border-radius: 6px;
   flex-grow: 1;
 }
+.hidden {
+  visibility: hidden;
+}
 .day-box-today {
   margin: 5px;
   padding-top: 2px;
@@ -15,12 +18,12 @@
   flex-grow: 1;
   border-style: solid;
   border-width: 2px;
-  border-color: red;;
+  border-color: red;
   /* filter: sepia(40%); */
 }
 .day-box-children {
   display: flex;
-  width: 50%
+  width: 50%;
 }
 .day-time-box {
   display: flex;
