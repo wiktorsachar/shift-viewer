@@ -1,0 +1,10 @@
+/* .header {
+  top: 0;
+  position: fixed;
+} */
+.content {
+  overflow: scroll;
+  height: 60vh;
+  /* border-width: 10px;
+    border-radius: 12px; */
+}
