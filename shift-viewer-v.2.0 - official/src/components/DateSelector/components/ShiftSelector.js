@@ -2,13 +2,18 @@ import React from "react";
 import Shifts from "../../../services/shifts";
 
 class ShiftSelector extends React.Component {
-  state = { system: "blank" };
+  state = { system: "blank", shiftDate: "" };
   handleChangeSystem = (system) => {
     this.setState({
       system,
     });
   };
+  handleShiftDateChange = (shiftDate) => {
+    this.setState({ shiftDate });
+  };
   render() {
+    // const getShift
+    console.log(this.state.shiftDate);
     return (
       <div>
         <span>System: </span>
@@ -38,7 +43,11 @@ class ShiftSelector extends React.Component {
         </select> */}
         <br />
         <span>Zmiana: </span>
-        <input type="date"></input>
+        <input
+          type="date"
+          value={this.state.shiftDate}
+          onChange={(e) => this.handleShiftDateChange(e.target.value)}
+        ></input>
       </div>
     );
   }
