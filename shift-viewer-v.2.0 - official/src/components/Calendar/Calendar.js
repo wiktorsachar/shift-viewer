@@ -2,6 +2,7 @@ import React from "react";
 import DayBox from "../DayBox/DayBox";
 import Shifts from "../../services/shifts";
 import DateSelector from "../DateSelector/DateSelector";
+import DateService from "../../services/dateService";
 import "./Calendar.css";
 
 class Calendar extends React.Component {
@@ -9,7 +10,8 @@ class Calendar extends React.Component {
     month: new Date(Date.now()).getMonth(),
     year: new Date(Date.now()).getFullYear(),
     shift: "blank",
-    // date: "",
+    system: "blank",
+    date: "",
   };
   handleMonthSelector = (props) => {
     this.setState({
@@ -28,17 +30,32 @@ class Calendar extends React.Component {
         break;
     }
   };
-  handleShiftSelector = (props) => {
-    this.setState({
-      shift: props === "blank" ? props : parseInt(props),
-    });
+  handleShiftChange = (dateString, system) => {
+    const dateArray = DateService.makeDateArray(new Date(dateString));
+    const shift = Shifts.getShiftNumber(dateArray);
+    switch (system) {
+      case "4shift":
+        return shift;
+      case "2shift":
+        if (shift === 1 || shift === 3) {
+          return 5;
+        } else if (shift === 2 || shift === 4) {
+          return 6;
+        }
+        break;
+      default:
+        return "blank";
+    }
   };
-  // handleDateSelector = (props) => {
-  //   this.setState({ date: props });
-  // };
+  handleSystemChange = (system) => {
+    this.setState({ system, shift: this.handleShiftChange(this.state.date, system) });
+  };
+  handleDateChange = (date) => {
+    this.setState({ date, shift: this.handleShiftChange(date, this.state.system) });
+  };
   render() {
     const dutyMonth =
-      this.state.shift === "blank"
+      this.state.shift === "blank" /*|| this.state.system === "blank" || !this.state.date*/
         ? Shifts.createBlankMonth(this.state.month, this.state.year)
         : this.state.shift < 5
         ? Shifts.createShiftMonth(
@@ -61,8 +78,9 @@ class Calendar extends React.Component {
           <DateSelector
             monthSelector={this.handleMonthSelector}
             yearSelector={this.handleYearSelector}
-            shiftSelector={this.handleShiftSelector}
-            // dateSelector={this.handleDateSelector}
+            handleShiftChange={this.handleShiftChange}
+            handleDateChange={this.handleDateChange}
+            handleSystemChange={this.handleSystemChange}
             state={this.state}
           />
         </div>
@@ -83,5 +101,7 @@ class Calendar extends React.Component {
     );
   }
 }
+//dokończyć walidację warunków: zaznaczone date&&shift&&system żeby renderowało właściwy kalendarz
+
 
 export default Calendar;
