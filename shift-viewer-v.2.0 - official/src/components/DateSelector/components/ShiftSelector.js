@@ -9,19 +9,22 @@ class ShiftSelector extends React.Component {
       system,
     });
   };
-  handleShiftDateChange = (shiftDate) => {
-    this.setState({ shiftDate });
-  };
+  // handleShiftDateChange = (shiftDate) => {
+  //   this.setState({ shiftDate });
+  // };
   handleShiftChange = (dateString, system) => {
-    this.handleShiftDateChange(dateString);
-    // const dateArray = DateService.makeDateArray(new Date(dateString));
-    // const shift = Shifts.getShiftNumber(dateArray);
-    const dateArray = DateService.makeDateArray(new Date(this.state.shiftDate));
+    // this.handleShiftDateChange(dateString);
+    const dateArray = DateService.makeDateArray(new Date(dateString));
     const shift = Shifts.getShiftNumber(dateArray);
+    // const dateArray = DateService.makeDateArray(new Date(this.state.shiftDate));
+    // const shift = Shifts.getShiftNumber(dateArray);
+    this.setState({shiftDate: dateString})
 
     switch (system) {
       case "4shift":
         this.props.handler(shift)
+        // return shift;
+        break;
       case "2shift":
         // switch (shift) {
         //   case 1 || 3:
@@ -34,12 +37,16 @@ class ShiftSelector extends React.Component {
         if (shift === 1 || shift === 3) {
           console.log(5);
           this.props.handler(5)
+          // return 5;
         } else if (shift === 2 || shift === 4) {
           console.log(6);
           this.props.handler(6)
+          // return 6;
         }
         break;
       default:
+        // return "blank";
+        this.props.handler("blank")
         break;
     }
   };
@@ -79,12 +86,14 @@ class ShiftSelector extends React.Component {
           type="date"
           value={this.state.shiftDate}
           onChange={(e) => {
-            this.handleShiftChange(this.props.date, this.state.system);
+            this.handleShiftChange(e.target.value, this.state.system);
           }}
         ></input>
       </div>
     );
   }
 }
+
+//przenieść state i metody do komponentu calendar, zrobić z shiftSelector.js komponent funkcyjny;
 
 export default ShiftSelector;
