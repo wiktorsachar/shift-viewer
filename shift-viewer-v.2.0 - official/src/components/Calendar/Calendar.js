@@ -9,6 +9,7 @@ class Calendar extends React.Component {
     month: new Date(Date.now()).getMonth(),
     year: new Date(Date.now()).getFullYear(),
     shift: "blank",
+    // date: "",
   };
   handleMonthSelector = (props) => {
     this.setState({
@@ -32,6 +33,9 @@ class Calendar extends React.Component {
       shift: props === "blank" ? props : parseInt(props),
     });
   };
+  // handleDateSelector = (props) => {
+  //   this.setState({ date: props });
+  // };
   render() {
     const dutyMonth =
       this.state.shift === "blank"
@@ -58,6 +62,7 @@ class Calendar extends React.Component {
             monthSelector={this.handleMonthSelector}
             yearSelector={this.handleYearSelector}
             shiftSelector={this.handleShiftSelector}
+            // dateSelector={this.handleDateSelector}
             state={this.state}
           />
         </div>

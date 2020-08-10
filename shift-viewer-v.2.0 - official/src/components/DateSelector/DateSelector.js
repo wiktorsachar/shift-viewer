@@ -19,7 +19,9 @@ const DateSelector = (props) => {
       <div className="header-nav">
         <ShiftSelector
           handler={props.shiftSelector}
+          // handleDateSelector={props.handleDateSelector}
           shift={props.state.shift}
+          date={props.state.date}
         />
       </div>
     </div>
