@@ -31,7 +31,7 @@ const DayBox = (props) => {
         )}
         <p className={holidayCheck}>{dayName}</p>
       </div>
-      {props.shift === "blank" ? (
+      {/*props.shift === "blank"*/ props.hideCondition ? (
         <div className="day-time-box">
           <span role="img" className="hidden" aria-label="">
             &#127769;

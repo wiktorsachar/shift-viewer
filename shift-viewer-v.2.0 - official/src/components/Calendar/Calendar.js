@@ -48,14 +48,21 @@ class Calendar extends React.Component {
     }
   };
   handleSystemChange = (system) => {
-    this.setState({ system, shift: this.handleShiftChange(this.state.date, system) });
+    this.setState({
+      system,
+      shift: this.handleShiftChange(this.state.date, system),
+    });
   };
   handleDateChange = (date) => {
-    this.setState({ date, shift: this.handleShiftChange(date, this.state.system) });
+    this.setState({
+      date,
+      shift: this.handleShiftChange(date, this.state.system),
+    });
   };
   render() {
+    const hideCondition = this.state.shift === "blank" || this.state.system === "blank" || !this.state.date
     const dutyMonth =
-      this.state.shift === "blank" /*|| this.state.system === "blank" || !this.state.date*/
+      /*this.state.shift === "blank" || this.state.system === "blank" || !this.state.date*/ hideCondition
         ? Shifts.createBlankMonth(this.state.month, this.state.year)
         : this.state.shift < 5
         ? Shifts.createShiftMonth(
@@ -68,6 +75,14 @@ class Calendar extends React.Component {
             this.state.year,
             this.state.shift - 4
           );
+
+    //-------------------------------------------------------
+    // const dutyMonth = Shifts.createBlankMonth(
+    //   this.state.month,
+    //   this.state.year
+    // );
+
+    //-------------------------------------------------------
     const today = new Date(Date.now()).getDate();
     const isMonthAndYearMatch =
       new Date(Date.now()).getMonth() === this.state.month &&
@@ -93,6 +108,7 @@ class Calendar extends React.Component {
               holiday={day.holiday}
               today={today}
               isMonthAndYearMatch={isMonthAndYearMatch}
+              hideCondition={hideCondition}
               key={i}
             />
           ))}
@@ -102,6 +118,5 @@ class Calendar extends React.Component {
   }
 }
 //dokończyć walidację warunków: zaznaczone date&&shift&&system żeby renderowało właściwy kalendarz
-
 
 export default Calendar;
