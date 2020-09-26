@@ -60,29 +60,23 @@ class Calendar extends React.Component {
     });
   };
   render() {
-    const hideCondition = this.state.shift === "blank" || this.state.system === "blank" || !this.state.date
-    const dutyMonth =
-      /*this.state.shift === "blank" || this.state.system === "blank" || !this.state.date*/ hideCondition
-        ? Shifts.createBlankMonth(this.state.month, this.state.year)
-        : this.state.shift < 5
-        ? Shifts.createShiftMonth(
-            this.state.month,
-            this.state.year,
-            this.state.shift
-          )
-        : Shifts.createDualShiftMonth(
-            this.state.month,
-            this.state.year,
-            this.state.shift - 4
-          );
-
-    //-------------------------------------------------------
-    // const dutyMonth = Shifts.createBlankMonth(
-    //   this.state.month,
-    //   this.state.year
-    // );
-
-    //-------------------------------------------------------
+    const hideCondition =
+      this.state.shift === "blank" ||
+      this.state.system === "blank" ||
+      !this.state.date;
+    const dutyMonth = hideCondition
+      ? Shifts.createBlankMonth(this.state.month, this.state.year)
+      : this.state.shift < 5
+      ? Shifts.createShiftMonth(
+          this.state.month,
+          this.state.year,
+          this.state.shift
+        )
+      : Shifts.createDualShiftMonth(
+          this.state.month,
+          this.state.year,
+          this.state.shift - 4
+        );
     const today = new Date(Date.now()).getDate();
     const isMonthAndYearMatch =
       new Date(Date.now()).getMonth() === this.state.month &&
@@ -117,6 +111,5 @@ class Calendar extends React.Component {
     );
   }
 }
-//dokończyć walidację warunków: zaznaczone date&&shift&&system żeby renderowało właściwy kalendarz
 
 export default Calendar;
